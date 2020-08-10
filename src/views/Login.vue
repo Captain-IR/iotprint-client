@@ -1,9 +1,9 @@
 <template>
 	<div class="mt-5 p-5">
-		<mdb-container fluid grid-list-xl>
+		<mdb-container>
 			<mdb-row>
-				<mdb-col col="4"></mdb-col>
-				<mdb-col col="4">
+				<mdb-col class="col-xl-4"></mdb-col>
+				<mdb-col col="12" class="col-xl-4">
 					<form>
 						<p class="h4 text-center mb-4">Login</p>
 						<div class="grey-text">
@@ -21,11 +21,13 @@
 							/>
 						</div>
 						<div class="text-center">
-							<mdb-btn @click.native.prevent="submit">Login</mdb-btn>
+							<mdb-btn @click.native.prevent="submit" 
+							color="secondary"
+							class="w-100">Login</mdb-btn>
 						</div>
 					</form>
 				</mdb-col>
-				<mdb-col col="4"></mdb-col>
+				<mdb-col class="col-xl-4"></mdb-col>
 			</mdb-row>
 		</mdb-container>
 	</div>

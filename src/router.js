@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from './views/Home.vue'
 import About from './views/About.vue'
+import Upload from './views/Upload.vue'
 import Repository from './views/Repository.vue'
 import Jobs from './views/Jobs.vue'
 import Login from './views/Login.vue'
@@ -25,6 +26,19 @@ const router = new Router({
 			path: '/about',
 			name: 'about',
 			component: About,
+		},
+		{
+			path: '/upload',
+			name: 'upload',
+			component: Upload,
+			beforeEnter: (to, from, next) => {
+				if (!store.getters['auth/authenticated']) {
+					return next({
+						name: 'login',
+					})
+				}
+				next()
+			},
 		},
 		{
 			path: '/repository',
@@ -62,6 +76,7 @@ const router = new Router({
 			name: 'signup',
 			component: Signup,
 		},
+		{ path: '*', redirect: { name: 'home' } },
 	],
 })
 

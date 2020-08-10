@@ -1,14 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import products from './modules/products'
 import auth from './modules/auth'
+import products from './modules/products'
+import jobs from './modules/jobs'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-	
+	state: {
+		url: 'http://localhost:5000/',
+	},
+	getters: {
+		url: state => state.url,
+	},
 	modules: {
 		auth,
 		products,
+		jobs,
 	},
 })

@@ -3,9 +3,8 @@
 		<mdb-navbar-brand>IoTprint</mdb-navbar-brand>
 		<mdb-navbar-toggler>
 			<mdb-navbar-nav center color="blue-grey">
-				<mdb-nav-item :to="{ name: 'home' }" waves-fixed>Home </mdb-nav-item>
-				<mdb-nav-item :to="{ name: 'about' }" waves-fixed>About </mdb-nav-item>
 				<template v-if="authenticated">
+					<mdb-nav-item :to="{ name: 'upload' }" waves-fixed>Upload </mdb-nav-item>
 					<mdb-nav-item :to="{ name: 'repository' }" waves-fixed
 						>Repository
 					</mdb-nav-item>
@@ -13,6 +12,9 @@
 				</template>
 			</mdb-navbar-nav>
 			<mdb-navbar-nav right color="blue-grey">
+				<mdb-nav-item :to="{ name: 'home' }" waves-fixed>Home </mdb-nav-item>
+				<mdb-nav-item :to="{ name: 'about' }" waves-fixed>About </mdb-nav-item>
+				<mdb-nav-item :to="{ name: 'docs' }" waves-fixed>Docs </mdb-nav-item>
 				<template v-if="!authenticated">
 					<mdb-nav-item :to="{ name: 'login' }" waves-fixed>Login </mdb-nav-item>
 					<mdb-nav-item :to="{ name: 'signup' }" waves-fixed>SignUp </mdb-nav-item>
@@ -64,9 +66,6 @@
 					})
 					.catch(err => console.log(err))
 			},
-			// logout: function() {
-			// 	this.$store.dispatch('logout')
-			// },
 		},
 	}
 </script>

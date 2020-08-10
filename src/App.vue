@@ -1,5 +1,5 @@
 <template>
-	<div class="flexible-content">
+	<div class="flexible-content overflow-auto">
 		<Header></Header>
 		<main>
 			<router-view></router-view>
