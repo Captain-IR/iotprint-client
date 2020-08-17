@@ -6,7 +6,7 @@
 			</div>
 		</mdb-row>
 
-		<mdb-tbl v-else>
+		<mdb-tbl v-else class="w-75 mx-auto">
 			<mdb-tbl-head>
 				<tr>
 					<th>#</th>

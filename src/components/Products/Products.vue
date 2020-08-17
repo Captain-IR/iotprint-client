@@ -24,7 +24,7 @@
 </template>
 
 <script>
-	import { mdbCardGroup, mdbRow, mdbCard, mdbCardBody } from 'mdbvue'
+	import { mdbCardGroup, mdbRow, mdbCol, mdbCard, mdbCardBody } from 'mdbvue'
 	import { mapGetters, mapActions } from 'vuex'
 	import Product from './Product'
 
@@ -42,6 +42,7 @@
 			Product,
 			mdbCardGroup,
 			mdbRow,
+			mdbCol,
 			mdbCard,
 			mdbCardBody,
 		},
