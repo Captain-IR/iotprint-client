@@ -48,7 +48,7 @@ export default {
 			const formData = new FormData()
 			formData.append('title', title)
 			formData.append('description', description)
-			formData.append('gcode', file)
+			formData.append('stl', file)
 			formData.append('image', image)
 			try {
 				const res = await axios.post('/product/create', formData)
