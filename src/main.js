@@ -9,7 +9,7 @@ import store from './store'
 
 require('@/store/subscriber')
 
-axios.defaults.baseURL = 'http://localhost:5000/'
+axios.defaults.baseURL = 'https://iotprint-server.herokuapp.com/api'
 
 Vue.config.productionTip = false
 

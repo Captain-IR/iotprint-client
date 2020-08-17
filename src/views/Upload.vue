@@ -21,7 +21,7 @@
 										outline
 									/>
 
-									<label>Choose a GCODE file</label><br />
+									<label>Choose an STL Model</label><br />
 									<input ref="file" @change="selectFile" type="file" /><br />
 
 									<label>Choose an Image</label><br />

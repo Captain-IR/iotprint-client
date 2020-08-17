@@ -22,7 +22,7 @@ export default {
 		async fetchJobs({ commit }) {
 			try {
 				this.state.isLoading = true
-				const res = await axios.get('/api/jobs')
+				const res = await axios.get('/jobs')
 				commit('SET_JOBS', res.data.jobs)
 			} catch (err) {
 				console.log(err)
@@ -31,7 +31,7 @@ export default {
 
 		async deleteJob({ dispatch }, jobId) {
 			try {
-				const res = await axios.delete('/api/job/' + jobId)
+				const res = await axios.delete('/job/' + jobId)
 				console.log(res)
 				dispatch('fetchJobs')
 			} catch (err) {

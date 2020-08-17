@@ -29,7 +29,7 @@ export default {
 		async fetchPP({ commit, state }) {
 			try {
 				state.isLoading = true
-				const res = await axios.get('/api/products/public')
+				const res = await axios.get('/products/public')
 				commit('SET_PP', res.data.products)
 			} catch (err) {
 				console.log(err)
@@ -38,7 +38,7 @@ export default {
 		async fetchProducts({ commit }) {
 			try {
 				this.state.isLoading = true
-				const res = await axios.get('/api/products')
+				const res = await axios.get('/products')
 				commit('SET_PRODUCTS', res.data.products)
 			} catch (err) {
 				console.log(err)
@@ -51,7 +51,7 @@ export default {
 			formData.append('gcode', file)
 			formData.append('image', image)
 			try {
-				const res = await axios.post('/api/product/create', formData)
+				const res = await axios.post('/product/create', formData)
 				console.log(res)
 				router.replace('repository')
 			} catch (err) {
@@ -61,7 +61,7 @@ export default {
 		async createJob(_, productId) {
 			try {
 				console.log(productId)
-				const res = await axios.post('/api/job/create', { productId })
+				const res = await axios.post('/job/create', { productId })
 				console.log(res)
 				router.replace('jobs')
 			} catch (err) {
@@ -70,7 +70,7 @@ export default {
 		},
 		async deleteProduct({ dispatch }, productId) {
 			try {
-				const res = await axios.delete('/api/product/' + productId)
+				const res = await axios.delete('/product/' + productId)
 				console.log(res)
 				dispatch('fetchProducts')
 			} catch (err) {
