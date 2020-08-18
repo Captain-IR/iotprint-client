@@ -7,12 +7,16 @@ export default {
 		pp: [],
 		products: [],
 		isLoading: true,
+		uploading: null,
+		progress: null,
 	},
 
 	getters: {
 		pp: state => state.pp,
 		products: state => state.products,
 		isLoading: state => state.isLoading,
+		uploading: state => state.uploading,
+		progress: state => state.progress,
 	},
 
 	mutations: {
@@ -45,18 +49,28 @@ export default {
 				console.log(err)
 			}
 		},
-		async createProduct(_, { title, description, file, image }) {
+		async createProduct({ state }, { title, description, file, image }) {
 			const formData = new FormData()
 			formData.append('title', title)
 			formData.append('description', description)
 			formData.append('stl', file)
 			formData.append('image', image)
 			try {
-				const res = await axios.post('/product/create', formData)
+				state.uploading = true
+				const res = await axios.post('/product/create', formData, {
+					onUploadProgress: e =>
+						(state.progress = Math.round((e.loaded * 100) / e.total)),
+				})
 				console.log(res)
-				router.replace('repository')
+				Vue.$toast.success('Uploading Successfully Redirecting...')
+				setTimeout(() => {
+					state.uploading = false
+					router.replace('repository')
+				}, 2000);
 			} catch (err) {
 				console.log(err)
+				Vue.$toast.error('Validation Failed!')
+				state.uploading = false
 			}
 		},
 		async createJob(_, productId) {

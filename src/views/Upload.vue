@@ -20,13 +20,24 @@
 										:rows="5"
 										outline
 									/>
-
-									<label>Choose an STL Model</label><br />
-									<input ref="file" @change="selectFile" type="file" /><br />
-
-									<label>Choose an Image</label><br />
-									<input ref="image" @change="selectImage" type="file" />
+									<mdb-row class="mb-3">
+										<mdb-col
+											><input ref="file" @change="selectFile" type="file"
+										/></mdb-col>
+										<mdb-col><label>Choose an STL Model</label></mdb-col>
+									</mdb-row>
+									<mdb-row>
+										<mdb-col
+											><input ref="image" @change="selectImage" type="file"
+										/></mdb-col>
+										<mdb-col><label>Choose an Image</label></mdb-col>
+									</mdb-row>
 								</div>
+
+								<div v-if="uploading" class="my-3">
+									<mdb-progress :height="20" :value="progress" />
+								</div>
+
 								<div class="text-center">
 									<button class="btn btn-info">Upload</button>
 								</div>
@@ -41,9 +52,17 @@
 </template>
 
 <script>
-	import { mdbContainer, mdbInput, mdbCard, mdbCardBody, mdbRow, mdbCol } from 'mdbvue'
+	import {
+		mdbContainer,
+		mdbInput,
+		mdbCard,
+		mdbCardBody,
+		mdbRow,
+		mdbCol,
+		mdbProgress,
+	} from 'mdbvue'
 
-	import { mapActions } from 'vuex'
+	import { mapGetters, mapActions } from 'vuex'
 
 	export default {
 		name: 'upload',
@@ -54,6 +73,9 @@
 				file: '',
 				image: '',
 			}
+		},
+		computed: {
+			...mapGetters(['uploading', 'progress']),
 		},
 		methods: {
 			...mapActions(['createProduct']),
@@ -81,6 +103,7 @@
 			mdbContainer,
 			mdbRow,
 			mdbCol,
+			mdbProgress,
 		},
 	}
 </script>

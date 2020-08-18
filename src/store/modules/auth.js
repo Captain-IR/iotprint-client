@@ -68,7 +68,7 @@ export default {
 				commit('SET_USER', res.data.user)
 			} catch (err) {
 				console.log(err)
-				Vue.$toast.error('Something Went wrong!')
+				Vue.$toast.error('Something went wrong!')
 				commit('SET_TOKEN', null)
 				commit('SET_USER', null)
 			}
@@ -80,6 +80,7 @@ export default {
 			}
 			try {
 				await axios.post('/auth/logout')
+				Vue.$toast.success('You have been logged out')
 				commit('SET_TOKEN', null)
 				commit('SET_USER', null)
 			} catch (err) {
