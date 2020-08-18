@@ -21,7 +21,7 @@
 								/>
 								<mdb-row class="mb-3">
 									<mdb-col><input ref="file" @change="selectFile" type="file"/></mdb-col>
-									<mdb-col><label>Choose an STL Model</label></mdb-col>
+									<mdb-col><label>Choose a GCODE File</label></mdb-col>
 								</mdb-row>
 								<mdb-row>
 									<mdb-col
@@ -83,7 +83,6 @@
 				this.image = this.$refs.image.files[0]
 			},
 			upload() {
-				console.log('inside upload')
 				this.createProduct({
 					title: this.title,
 					description: this.description,

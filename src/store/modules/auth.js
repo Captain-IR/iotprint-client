@@ -33,12 +33,12 @@ export default {
 		signup(_, credentials) {
 			axios
 				.post('/auth/signup', credentials)
-				.then(() => {
-					Vue.$toast.success('SignUp successful please login!')
+				.then((res) => {
+					Vue.$toast.success(res.data.message)
 					router.replace('login')
 				})
 				.catch(err => {
-					console.log(err.response.data)
+					// console.log(err.response.data)
 					Vue.$toast.error(err.response.data.message)
 				})
 		},
@@ -46,10 +46,10 @@ export default {
 		async login({ dispatch }, credentials) {
 			try {
 				let res = await axios.post('/auth/login', credentials)
-				Vue.$toast.success('Login successful')
+				Vue.$toast.success(res.data.message)
 				return dispatch('attempt', res.data.token)
 			} catch (err) {
-				console.log(err.response.data)
+				// console.log(err.response.data)
 				Vue.$toast.error(err.response.data.message)
 			}
 		},
@@ -67,8 +67,8 @@ export default {
 				let res = await axios.get('/auth/me')
 				commit('SET_USER', res.data.user)
 			} catch (err) {
-				console.log(err)
-				Vue.$toast.error('Something went wrong!')
+				// console.log(err)
+				Vue.$toast.error(err.response.data.message)
 				commit('SET_TOKEN', null)
 				commit('SET_USER', null)
 			}
@@ -80,11 +80,11 @@ export default {
 			}
 			try {
 				await axios.post('/auth/logout')
-				Vue.$toast.success('You have been logged out')
+				// Vue.$toast.success(res.data.message)
 				commit('SET_TOKEN', null)
 				commit('SET_USER', null)
 			} catch (err) {
-				console.log(err)
+				// console.log(err)
 				Vue.$toast.error(err.response.data.message)
 			}
 		},

@@ -7,11 +7,11 @@
 
 			<!-- <mdb-btn size="sm" class="w-100" color="info">Edit</mdb-btn> -->
 
+			<mdb-btn @click="printJob(product._id)" size="sm" class="w-100" color="primary">Print</mdb-btn>
+
 			<mdb-btn @click="removeProduct" size="sm" class="w-100" color="danger"
 				>Delete</mdb-btn
 			>
-
-			<mdb-btn @click="printJob(product._id)" size="sm" class="w-100" color="primary">Print</mdb-btn>
 		</mdb-card-body>
 	</mdb-card>
 </template>

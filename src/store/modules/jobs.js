@@ -26,19 +26,19 @@ export default {
 				const res = await axios.get('/jobs')
 				commit('SET_JOBS', res.data.jobs)
 			} catch (err) {
-				console.log(err)
+				// console.log(err)
 			}
 		},
 
 		async deleteJob({ dispatch }, jobId) {
 			try {
 				const res = await axios.delete('/job/' + jobId)
-				console.log(res)
-				Vue.$toast.warning('Job Canceled')
+				// console.log(res)
+				Vue.$toast.warning(res.data.message)
 				dispatch('fetchJobs')
 			} catch (err) {
-				console.log(err)
-				Vue.$toast.error('Something Went Wrong!')
+				// console.log(err)
+				Vue.$toast.error(err.response.data.message)
 			}
 		},
 	},

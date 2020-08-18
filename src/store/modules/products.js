@@ -37,7 +37,8 @@ export default {
 				const res = await axios.get('/products/public')
 				commit('SET_PP', res.data.products)
 			} catch (err) {
-				console.log(err)
+				// console.log(err)
+				Vue.$toast.error(err.response.data.message)
 			}
 		},
 		async fetchProducts({ commit }) {
@@ -46,14 +47,15 @@ export default {
 				const res = await axios.get('/products')
 				commit('SET_PRODUCTS', res.data.products)
 			} catch (err) {
-				console.log(err)
+				// console.log(err)
+				Vue.$toast.error(err.response.data.message)
 			}
 		},
 		async createProduct({ state }, { title, description, file, image }) {
 			const formData = new FormData()
 			formData.append('title', title)
 			formData.append('description', description)
-			formData.append('stl', file)
+			formData.append('gcode', file)
 			formData.append('image', image)
 			try {
 				state.uploading = true
@@ -61,39 +63,41 @@ export default {
 					onUploadProgress: e =>
 						(state.progress = Math.round((e.loaded * 100) / e.total)),
 				})
-				console.log(res)
-				Vue.$toast.success('Uploading Successfully Redirecting...')
+				// console.log(res)
+				Vue.$toast.success(res.data.message + ', Redirecting...')
 				setTimeout(() => {
 					state.uploading = false
+					state.progress = 0
 					router.replace('repository')
-				}, 2000);
+				}, 2000)
 			} catch (err) {
-				console.log(err)
-				Vue.$toast.error('Validation Failed!')
+				// console.log(err)
+				Vue.$toast.error(err.response.data.message)
 				state.uploading = false
 			}
 		},
 		async createJob(_, productId) {
 			try {
-				console.log(productId)
+				// console.log(productId)
 				const res = await axios.post('/job/create', { productId })
-				console.log(res)
-				Vue.$toast.info('Print Job Created')
+				// console.log(res)
+				Vue.$toast.info(res.data.message)
 				router.replace('jobs')
 			} catch (err) {
-				console.log(err.response.data)
-				Vue.$toast.error('Please Login First!')
+				// console.log(err.response.data)
+				Vue.$toast.error('Please login first!')
+				// Vue.$toast.error(err.response.data.message)
 			}
 		},
 		async deleteProduct({ dispatch }, productId) {
 			try {
 				const res = await axios.delete('/product/' + productId)
-				console.log(res)
-				Vue.$toast.warning('Product Deleted')
+				// console.log(res)
+				Vue.$toast.warning(res.data.message)
 				dispatch('fetchProducts')
 			} catch (err) {
-				console.log(err)
-				Vue.$toast.error('Something Went Wrong!')
+				// console.log(err)
+				Vue.$toast.error(err.response.data.message)
 			}
 		},
 	},
