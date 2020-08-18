@@ -9,7 +9,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		url: 'https://iotprint-server.herokuapp.com/',
-		// url: 'http://localhost:5000/',
 	},
 	getters: {
 		url: state => state.url,
