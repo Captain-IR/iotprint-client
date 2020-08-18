@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from './views/Home.vue'
 import About from './views/About.vue'
+import Docs from './views/Docs.vue'
 import Upload from './views/Upload.vue'
 import Repository from './views/Repository.vue'
 import Jobs from './views/Jobs.vue'
@@ -26,6 +27,11 @@ const router = new Router({
 			path: '/about',
 			name: 'about',
 			component: About,
+		},
+		{
+			path: '/docs',
+			name: 'docs',
+			component: Docs,
 		},
 		{
 			path: '/upload',

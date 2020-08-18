@@ -1,11 +1,11 @@
 <template>
-	<div class="mt-5 p-5">
+	<div class="mt-4 p-5">
 		<mdb-container>
 			<mdb-row>
 				<mdb-col class="col-xl-4"></mdb-col>
 				<mdb-col col="12" class="col-xl-4">
 					<form>
-						<p class="h4 text-center mb-4">Sign Up</p>
+						<p class="h4 text-center mb-2">Sign Up</p>
 						<div class="grey-text">
 							<mdb-input v-model="username" label="Your name" icon="user" type="text" />
 

@@ -12,8 +12,8 @@
 		</mdb-row>
 		<mdb-row v-if="isLoading">
 			<div class="spinner-border mx-auto" role="status">
-					<span class="sr-only">Loading...</span>
-				</div>
+				<span class="sr-only">Loading...</span>
+			</div>
 		</mdb-row>
 		<mdb-card-group v-else deck>
 			<div v-for="(product, index) in products" :key="index">

@@ -2,17 +2,22 @@
 	<div class="flexible-content overflow-auto">
 		<Header></Header>
 		<main>
-			<router-view></router-view>
+			<div class="mt-5 p-5">
+				<router-view></router-view>
+			</div>
 		</main>
+		<Footer></Footer>
 	</div>
 </template>
 
 <script>
 	import Header from './components/Header'
+	import Footer from './components/Footer'
 	export default {
 		name: 'App',
 		components: {
 			Header,
+			Footer,
 		},
 	}
 </script>
