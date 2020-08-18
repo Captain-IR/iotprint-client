@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import axios from 'axios'
 
 export default {
@@ -33,9 +34,11 @@ export default {
 			try {
 				const res = await axios.delete('/job/' + jobId)
 				console.log(res)
+				Vue.$toast.warning('Job Canceled')
 				dispatch('fetchJobs')
 			} catch (err) {
 				console.log(err)
+				Vue.$toast.error('Something Went Wrong!')
 			}
 		},
 	},

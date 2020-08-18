@@ -21,9 +21,9 @@
 							/>
 						</div>
 						<div class="text-center">
-							<mdb-btn @click.native.prevent="submit" 
-							color="secondary"
-							class="w-100">Login</mdb-btn>
+							<mdb-btn @click.native.prevent="submit" color="secondary" class="w-100"
+								>Login</mdb-btn
+							>
 						</div>
 					</form>
 				</mdb-col>

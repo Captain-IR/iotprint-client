@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from 'axios'
 import router from '../../router'
 
@@ -33,14 +34,24 @@ export default {
 			axios
 				.post('/auth/signup', credentials)
 				.then(() => {
+					Vue.$toast.success('SignUp successful please login!')
 					router.replace('login')
 				})
-				.catch(err => console.log(err))
+				.catch(err => {
+					console.log(err.response.data)
+					Vue.$toast.error(err.response.data.message)
+				})
 		},
 
 		async login({ dispatch }, credentials) {
-			let res = await axios.post('/auth/login', credentials)
-			return dispatch('attempt', res.data.token)
+			try {
+				let res = await axios.post('/auth/login', credentials)
+				Vue.$toast.success('Login successful')
+				return dispatch('attempt', res.data.token)
+			} catch (err) {
+				console.log(err.response.data)
+				Vue.$toast.error(err.response.data.message)
+			}
 		},
 
 		async attempt({ commit, state }, token) {
@@ -48,16 +59,16 @@ export default {
 				commit('SET_TOKEN', token)
 				// Headers set by subscriber
 			}
-
 			if (!state.token) {
 				return
 			}
 
 			try {
 				let res = await axios.get('/auth/me')
-
 				commit('SET_USER', res.data.user)
 			} catch (err) {
+				console.log(err)
+				Vue.$toast.error('Something Went wrong!')
 				commit('SET_TOKEN', null)
 				commit('SET_USER', null)
 			}
@@ -73,6 +84,7 @@ export default {
 				commit('SET_USER', null)
 			} catch (err) {
 				console.log(err)
+				Vue.$toast.error(err.response.data.message)
 			}
 		},
 	},

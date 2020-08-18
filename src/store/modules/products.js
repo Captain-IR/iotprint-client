@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from 'axios'
 import router from '../../router'
 
@@ -63,18 +64,22 @@ export default {
 				console.log(productId)
 				const res = await axios.post('/job/create', { productId })
 				console.log(res)
+				Vue.$toast.info('Print Job Created')
 				router.replace('jobs')
 			} catch (err) {
-				console.log(err)
+				console.log(err.response.data)
+				Vue.$toast.error('Please Login First!')
 			}
 		},
 		async deleteProduct({ dispatch }, productId) {
 			try {
 				const res = await axios.delete('/product/' + productId)
 				console.log(res)
+				Vue.$toast.warning('Product Deleted')
 				dispatch('fetchProducts')
 			} catch (err) {
 				console.log(err)
+				Vue.$toast.error('Something Went Wrong!')
 			}
 		},
 	},
