@@ -2,7 +2,7 @@
 	<mdb-navbar position="top" scrolling color="indigo" dark>
 		<mdb-navbar-brand>IoTprint</mdb-navbar-brand>
 		<mdb-navbar-toggler>
-			<mdb-navbar-nav center color="blue-grey">
+			<mdb-navbar-nav color="blue-grey">
 				<template v-if="authenticated">
 					<mdb-nav-item :to="{ name: 'upload' }" waves-fixed>Upload </mdb-nav-item>
 					<mdb-nav-item :to="{ name: 'repository' }" waves-fixed
