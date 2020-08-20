@@ -1,6 +1,6 @@
 <template>
 	<mdb-footer color="indigo" class=" position-fixed font-small mt-4 w-100">
-		<div class="footer-copyright text-center py-3">
+		<div class="footer-copyright text-center py-2">
 			<mdb-container fluid>
 				&copy; 2020 Copyright: IoTprint
 			</mdb-container>
