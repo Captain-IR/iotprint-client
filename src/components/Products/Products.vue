@@ -5,7 +5,8 @@
 				<mdb-card class="mb-4">
 					<mdb-card-body>
 						You don't have any models,
-						<router-link :to="{ name: 'upload' }">Upload</router-link> now.
+						<router-link :to="{ name: 'upload' }">Upload</router-link> now or pick on from
+						the <router-link :to="{ name: 'home' }">Home </router-link>page
 					</mdb-card-body>
 				</mdb-card>
 			</mdb-col>
